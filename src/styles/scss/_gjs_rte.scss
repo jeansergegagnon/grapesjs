@@ -2,13 +2,10 @@
   &toolbar {
     @extend .#{$app-prefix}no-user-select;
 
+    border: 1px solid $mainDkColor;
     position: absolute;
-    z-index: 10;
-  }
-
-  &toolbar-ui {
-    border: 1px solid var(--gjs-main-dark-color);
     border-radius: 3px;
+    z-index: 10;
   }
 
   &actionbar {
@@ -20,8 +17,8 @@
     align-items: center;
     justify-content: center;
     padding: 5px;
-    width: 25px;
-    border-right: 1px solid var(--gjs-main-dark-color);
+    min-width: 25px;
+    border-right: 1px solid $mainDkColor;
     text-align: center;
     cursor: pointer;
     outline: none;
@@ -31,15 +28,15 @@
     }
 
     &:hover {
-      background-color: var(--gjs-main-light-color);
+      background-color: $mainLhColor;
     }
   }
 
   &active {
-    background-color: var(--gjs-main-light-color);
+    background-color: $mainLhColor;
   }
   &disabled {
-    color: var(--gjs-main-light-color);
+    color: $mainLhColor;
     cursor: not-allowed;
     &:hover {
       background-color: unset;

@@ -60,7 +60,6 @@
 
   &sels-info {
     margin: 7px 0;
-    text-align: left;
   }
 
   &sel-id {
@@ -75,7 +74,9 @@
 }
 
 .#{$clm-prefix}tags {
-  font-size: var(--gjs-font-size);
+  @extend .#{$sm-prefix}sector;
+
+  font-size: $fontSizeS;
   padding: 10px 5px;
 
   ##{$clm-prefix}sel {
@@ -106,8 +107,8 @@
   ##{$clm-prefix}new {
     @extend  .#{$app-prefix}invis-invis;
 
-    color: var(--gjs-font-color);
-    padding: var(--gjs-padding-elem-classmanager);
+    color: $fontColor;
+    padding: $paddElClm;
     display: none;
   }
 

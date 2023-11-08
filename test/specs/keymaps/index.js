@@ -1,4 +1,5 @@
-import Editor from 'editor';
+import Editor from 'editor/index';
+import Keymaps from 'keymaps';
 
 describe('Keymaps', () => {
   describe('Main', () => {
@@ -7,9 +8,8 @@ describe('Keymaps', () => {
     let editor;
 
     beforeEach(() => {
-      editor = new Editor({ keymaps: { defaults: [] } });
+      editor = Editor().init();
       em = editor.getModel();
-      em.loadOnStart();
       obj = editor.Keymaps;
     });
 
@@ -63,18 +63,17 @@ describe('Keymaps', () => {
 
       it('Should run the handler', () => {
         const handler = {
-          run: jest.fn(),
-          callRun: jest.fn(),
+          run: jest.fn()
         };
         obj.add('test', 'ctrl+a', handler);
         const keyboardEvent = new KeyboardEvent('keydown', {
           keyCode: 65,
           which: 65,
-          ctrlKey: true,
+          ctrlKey: true
         });
         document.dispatchEvent(keyboardEvent);
 
-        expect(handler.callRun).toBeCalled();
+        expect(handler.run).toBeCalled();
       });
     });
 
@@ -85,34 +84,32 @@ describe('Keymaps', () => {
 
       it('Should not run the handler', () => {
         const handler = {
-          run: jest.fn(),
-          callRun: jest.fn(),
+          run: jest.fn()
         };
         obj.add('test', 'ctrl+a', handler);
         const keyboardEvent = new KeyboardEvent('keydown', {
           keyCode: 65,
           which: 65,
-          ctrlKey: true,
+          ctrlKey: true
         });
         document.dispatchEvent(keyboardEvent);
 
-        expect(handler.callRun).toBeCalledTimes(0);
+        expect(handler.run).toBeCalledTimes(0);
       });
 
       it('Should run the handler if checked as force', () => {
         const handler = {
-          run: jest.fn(),
-          callRun: jest.fn(),
+          run: jest.fn()
         };
         obj.add('test', 'ctrl+a', handler, { force: true });
         const keyboardEvent = new KeyboardEvent('keydown', {
           keyCode: 65,
           which: 65,
-          ctrlKey: true,
+          ctrlKey: true
         });
         document.dispatchEvent(keyboardEvent);
 
-        expect(handler.callRun).toBeCalled();
+        expect(handler.run).toBeCalled();
       });
     });
   });

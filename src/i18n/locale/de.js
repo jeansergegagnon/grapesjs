@@ -1,11 +1,11 @@
-const traitInputAttr = { placeholder: 'z.B. Text hier' }
+const traitInputAttr = { placeholder: 'ex. Votre texte ici' };
 
 export default {
   assetManager: {
     addButton: 'Bild hinzufügen',
-    inputPlh: 'http://path/to/the/image.jpg',
+    inputPlh: 'http://chemin/vers/image.jpg',
     modalTitle: 'Bild auswählen',
-    uploadTitle: 'Dateien hier ablegen oder zum Hochladen anklicken'
+    uploadTitle: 'Ziehe eine Datei hierher oder klicke auf upload'
   },
   // Here just as a reference, GrapesJS core doesn't contain any block,
   // so this should be omitted from other local files
@@ -28,12 +28,12 @@ export default {
       label: 'Label',
       link: 'Link',
       map: 'Karte',
-      tfoot: 'Tabellenfuß',
-      tbody: 'Tabellenkörßer',
-      thead: 'Tabellenkopf',
+      tfoot: 'Tabellen Fußzeile',
+      tbody: 'Tabellen Inhalt',
+      thead: 'Tabellen Kopf',
       table: 'Tabelle',
-      row: 'Tabellenzeile',
-      cell: 'Tabellenzelle'
+      row: 'Zeile',
+      cell: 'Zelle'
     }
   },
   deviceManager: {
@@ -41,8 +41,8 @@ export default {
     devices: {
       desktop: 'Desktop',
       tablet: 'Tablet',
-      mobileLandscape: 'Mobile horizontal',
-      mobilePortrait: 'Mobile vertikal'
+      mobileLandscape: 'Mobile Landscape',
+      mobilePortrait: 'Mobile Portrait'
     }
   },
   panels: {
@@ -50,12 +50,12 @@ export default {
       titles: {
         preview: 'Vorschau',
         fullscreen: 'Vollbild',
-        'sw-visibility': 'Komponenten anzeigen',
+        'sw-visibility': 'Komponente anzeigen',
         'export-template': 'Code anzeigen',
-        'open-sm': 'Style Manager öffnen',
-        'open-tm': 'Einstellungen',
-        'open-layers': 'Ebenen öffnen',
-        'open-blocks': 'Blöcke öffnen'
+        'open-sm': 'Stil Manager öffnen',
+        'open-tm': 'Parameter',
+        'open-layers': 'Layer Manager öffnen',
+        'open-blocks': 'Block öffnen'
       }
     }
   },
@@ -65,13 +65,14 @@ export default {
     emptyState: '- Status -',
     states: {
       hover: 'Hover',
-      active: 'Click',
-      'nth-of-type(2n)': 'Even/Odd'
+      active: 'Klick',
+      'nth-of-type(2n)': 'Gerade/Ungerade'
     }
   },
   styleManager: {
-    empty: 'Wählen Sie ein Element aus, bevor Sie den Style Manager verwenden',
-    layer: 'Ebenen',
+    empty:
+      "Wählen sie ein Element aus bevor sie den Stil Manager nutzen",
+    layer: 'Evene',
     fileButton: 'Bilder',
     sectors: {
       general: 'Allgemein',
@@ -80,7 +81,7 @@ export default {
       decorations: 'Dekorationen',
       extra: 'Extra',
       flex: 'Flex',
-      dimension: 'Größen'
+      dimension: 'Dimension'
     },
     // The core library generates the name by their `property` name
     properties: {
@@ -100,38 +101,23 @@ export default {
       'margin-right': 'Äußerer Abstand rechts',
       'margin-left': 'Äußerer Abstand links',
       'margin-bottom': 'Äußerer Abstand unten',
-      'margin-top-sub': 'Oben',
-      'margin-right-sub': 'Rechts',
-      'margin-bottom-sub': 'Unten',
-      'margin-left-sub': 'Links',
-      'padding-top-sub': 'Oben',
-      'padding-right-sub': 'Rechts',
-      'padding-bottom-sub': 'Unten',
-      'padding-left-sub': 'Links',
-      'border-width-sub': 'Breite',
-      'border-style-sub': 'Stil',
-      'border-color-sub': 'Rarbe',
-      'border-top-left-radius-sub': 'Oben links',
-      'border-top-right-radius-sub': 'Oben rechts',
-      'border-bottom-right-radius-sub': 'Unten rechts',
-      'border-bottom-left-radius-sub': 'Unten links',
       padding: 'Innerer Abstand',
       'padding-top': 'Innerer Abstand oben',
       'padding-left': 'Innerer Abstand links',
       'padding-right': 'Innerer Abstand rechts',
       'padding-bottom': 'Innerer Abstand unten',
-      'font-family': 'Schriftart',
+      'font-family': 'Schrift Familie',
       'font-size': 'Schriftgröße',
       'font-weight': 'Schriftstärke',
-      'letter-spacing': 'Zeichenabstand',
+      'letter-spacing': 'Buchstaben Abstand',
       color: 'Schriftfarbe',
-      'line-height': 'Zeilenhöhe',
-      'text-align': 'Textausrichtung',
-      'text-shadow': 'Textschatten',
-      'text-shadow-h': 'X',
-      'text-shadow-v': 'Y',
-      'text-shadow-blur': 'Unschärfe',
-      'text-shadow-color': 'Farbe',
+      'line-height': 'Linien Höhe',
+      'text-align': 'Text Ausrichtung',
+      'text-shadow': 'Text Schatten',
+      'text-shadow-h': 'Text Schatten: horizontal',
+      'text-shadow-v': 'Text Schatten: vertikal',
+      'text-shadow-blur': 'Text Schatten: unschärfe',
+      'text-shadow-color': 'Text Schatten: Farbe',
       'border-top-left': 'Rand oben links',
       'border-top-right': 'Rand oben rechts',
       'border-bottom-left': 'Rand unten links',
@@ -142,63 +128,56 @@ export default {
       'border-radius-bottom-right': 'Rand Radius unten rechts',
       'border-radius': 'Rand Radius',
       border: 'Rand',
-      'border-width': 'Randbreite',
-      'border-style': 'Randstil',
-      'border-color': 'Randfarbe',
-      'box-shadow': 'Boxschatten',
-      'box-shadow-h': 'X',
-      'box-shadow-v': 'Y',
-      'box-shadow-blur': 'Unschärge',
-      'box-shadow-spread': 'Verteilung',
-      'box-shadow-color': 'Farbe',
-      'box-shadow-type': 'Typ',
+      'border-width': 'Rand Breite',
+      'border-style': 'Rand Stil',
+      'border-color': 'Rand Farbe',
+      'box-shadow': 'Box Schatten',
+      'box-shadow-h': 'Box Schatten: horizontal',
+      'box-shadow-v': 'Box Schatten: vertikal',
+      'box-shadow-blur': 'Box Schatten: Unschärfe',
+      'box-shadow-spread': "Box Schatten: Streuung",
+      'box-shadow-color': "Box Schatten: Farbe",
+      'box-shadow-type': "Box Schatten: Typ",
       background: 'Hintergrund',
-      'background-image': 'Hintergrundbild',
+      'background-image': 'Hintergrund Bild',
       'background-repeat': 'Hintergrund wiederholen',
-      'background-position': 'Hintergrundposition',
-      'background-attachment': 'Hintergrundanhang',
-      'background-size': 'Hintergrundgröße',
-      'background-color': 'Hintergrundfarbe',
-      'background-image-sub': 'Bild',
-      'background-repeat-sub': 'Wiederholung',
-      'background-position-sub': 'Position',
-      'background-attachment-sub': 'Anhang',
-      'background-size-sub': 'Größe',
+      'background-position': 'Hintergrund Position',
+      'background-attachment': 'Hintergrund Anhang',
+      'background-size': 'Hintergrund Größe',
+      'background-color': 'Hintergrund Farbe',
       transition: 'Übergang',
       'transition-property': 'Übergang: Typ',
       'transition-duration': 'Übergang: Dauer',
       'transition-timing-function': 'Übergang: Zeitfunktion',
-      'transition-property-sub': 'Eigenschaft',
-      'transition-duration-sub': 'Dauer',
-      'transition-timing-function-sub': 'Zeit',
       perspective: 'Perspektive',
       transform: 'Transformation',
-      'transform-rotate-x': 'Rotation X',
-      'transform-rotate-y': 'Rotation Y',
-      'transform-rotate-z': 'Rotation Z',
-      'transform-scale-x': 'Skalierung X',
-      'transform-scale-y': 'Skalierung Y',
-      'transform-scale-z': 'Skalierung Z',
-      'flex-direction': 'Flex Ausrichtung',
-      'flex-wrap': 'Flex Wrap',
-      'justify-content': 'Vertikale Ausrichtung',
-      'align-items': 'Senkrechte Ausrichtung',
-      'align-content': 'Achsenausrichtung',
+      'transform-rotate-x': 'Transformation: Rotation x',
+      'transform-rotate-y': 'Transformation: Rotation y',
+      'transform-rotate-z': 'Transformation: Rotation z',
+      'transform-scale-x': 'Transformation: Skala x',
+      'transform-scale-y': 'Transformation: Skala y',
+      'transform-scale-z': 'Transformation: Skala z',
+      'flex-direction': 'Ausrichtung Flex',
+      'flex-wrap': 'Flex wrap',
+      'justify-content': 'Content abgleichen',
+      'align-items': 'Element Ausrichtung',
+      'align-content': 'Contente Ausrichtung',
       order: 'Reihenfolge',
       'flex-basis': 'Flex Basis',
       'flex-grow': 'Flex Wachsen',
       'flex-shrink': 'Flex Schrumpfen',
-      'align-self': 'Eigene Ausrichtung'
+      'align-self': 'Ausrichtung selbst'
     }
   },
   traitManager: {
-    empty: 'Wählen Sie ein Element aus, bevor Sie den Eigenschaftsmanager verwenden',
-    label: 'Komponenten Eigenschaften',
+    empty:
+      "Wählen sie ein Element aus bevor sie den Komponenten Manager nutzen",
+    label: 'Komponenten Einstellungen',
     traits: {
       // The core library generates the name by their `name` property
       labels: {
         id: 'ID',
-        alt: 'Alternativtext',
+        alt: 'Text Alternative',
         title: 'Titel',
         href: 'Link'
       },
@@ -217,8 +196,5 @@ export default {
         }
       }
     }
-  },
-  storageManager: {
-    recover: 'Möchten Sie ungespeicherte Änderungen wiederherstellen?'
   }
-}
+};

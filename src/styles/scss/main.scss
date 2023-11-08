@@ -1,16 +1,23 @@
 /* stylelint-disable */
-@import "codemirror/lib/codemirror";
-@import "codemirror/theme/hopscotch";
+@import "node_modules/spectrum-colorpicker/spectrum";
+@import "node_modules/codemirror/lib/codemirror";
+@import "node_modules/codemirror/theme/hopscotch";
 
-@import "spectrum.scss";
+
 @import "gjs_variables.scss";
 
-@function darken-color($color, $percentage) {
-  @return color-mix(in srgb, $color, black $percentage)
-}
 
-@function lighten-color($color, $percentage) {
-  @return color-mix(in srgb, $color, white $percentage)
+@font-face {
+  font-family: 'font3336';
+  src: url('#{$fontPath}/#{$fontName}.eot?v=#{$fontV}');
+  src:
+    url('#{$fontPath}/#{$fontName}.woff?v=#{$fontV}') format('woff'),
+    //url('#{$fontPath}/#{$fontName}.woff2?v=#{$fontV}') format('woff2'),
+    url('#{$fontPath}/#{$fontName}.ttf?v=#{$fontV}') format('truetype'),
+    url('#{$fontPath}/#{$fontName}.svg?v=#{$fontV}') format('svg'),
+    url('#{$fontPath}/#{$fontName}.eot?v=#{$fontV}') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @mixin user-select($v) {
@@ -44,11 +51,11 @@ $prefix: $app-prefix;
 
 @import "gjs_status";
 
-$colorsAll: (one, var(--gjs-primary-color)),
-  (two, var(--gjs-secondary-color)),
-  (three, var(--gjs-tertiary-color)),
-  (four, var(--gjs-quaternary-color)),
-  (danger, var(--gjs-color-red));
+$colorsAll: (one, $primaryColor),
+  (two, $secondaryColor),
+  (three, $tertiaryColor),
+  (four, $quaternaryColor),
+  (danger, $colorRed);
 
 .#{$prefix} {
   @each $cnum, $ccol in $colorsAll {
@@ -71,31 +78,53 @@ $colorsAll: (one, var(--gjs-primary-color)),
 
 .#{$app-prefix}bg {
   &-main {
-    background-color: var(--gjs-main-color);
+    background-color: $mainColor;
   }
 }
 
 .#{$app-prefix}color {
   &-main {
-    color: var(--gjs-font-color);
-    fill: var(--gjs-font-color);
+    color: $fontColor;
+    fill: $fontColor;
   }
 
   &-active {
-    color: var(--gjs-font-color-active);
-    fill: var(--gjs-font-color-active);
+    color: $fontColorActive;
+    fill: $fontColorActive;
   }
 
   &-warn {
-    color: var(--gjs-color-warn);
-    fill: var(--gjs-color-warn);
+    color: $colorWarn;
+    fill: $colorWarn;
   }
 
   &-hl {
-    color: var(--gjs-color-highlight);
-    fill: var(--gjs-color-highlight);
+    color: $colorHighlight;
+    fill: $colorHighlight;
   }
 }
+
+.#{$app-prefix}fonts::before {
+  display: block;
+  font: normal normal normal 14px font3336; // shortening font declaration
+  text-rendering: auto; // optimizelegibility throws things off #1094
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 5em;
+}
+.#{$app-prefix}f-b1::before { content: 'Q'; }
+.#{$app-prefix}f-b2::before { content: 'W'; }
+.#{$app-prefix}f-b3::before { content: 'E'; }
+.#{$app-prefix}f-b37::before { content: 'R'; }
+.#{$app-prefix}f-hero::before { content: 'T'; }
+.#{$app-prefix}f-h1p::before { content: 'y'; }
+.#{$app-prefix}f-3ba::before { content: 'u'; }
+.#{$app-prefix}f-image::before { content: 'I'; }
+.#{$app-prefix}f-text::before { content: 'o'; }
+.#{$app-prefix}f-quo::before { content: 'p'; }
+.#{$app-prefix}f-button::before { content: 'B'; }
+.#{$app-prefix}f-divider::before { content: 'D'; }
+
 
 .#{$app-prefix}invis-invis,
 .#{$app-prefix}no-app {
@@ -138,7 +167,7 @@ $colorsAll: (one, var(--gjs-primary-color)),
 }
 
 .#{$app-prefix}drag-helper {
-  background-color: var(--gjs-color-blue) !important;
+  background-color: $colorBlue !important;
   pointer-events: none !important;
   position: absolute !important;
   z-index: 10 !important;
@@ -173,7 +202,7 @@ $colorsAll: (one, var(--gjs-primary-color)),
 
 // Custom scrollbars for Chrome
 .#{$app-prefix}editor-cont ::-webkit-scrollbar-track {
-  background: var(--gjs-secondary-dark-color);
+  background: $mainDklColor;
 }
 
 .#{$app-prefix}editor-cont ::-webkit-scrollbar-thumb {
@@ -185,48 +214,6 @@ $colorsAll: (one, var(--gjs-primary-color)),
 }
 
 /********************* MAIN ************************/
-// @property --input-padding {
-//   syntax: "<length>";
-//   inherits: false;
-//   initial-value: #{$inputPadding};
-// }
-
-:root {
-  --gjs-main-color: #{$mainColor};
-  --gjs-primary-color: #{$primaryColor};
-  --gjs-secondary-color: #{$secondaryColor};
-  --gjs-tertiary-color: #{$tertiaryColor};
-  --gjs-quaternary-color: #{$quaternaryColor};
-  --gjs-font-color: #{$fontColor};
-  --gjs-font-color-active: #{$fontColorActive};
-  --gjs-main-dark-color: #{$mainDkColor};
-  --gjs-secondary-dark-color: #{$mainDklColor};
-  --gjs-main-light-color: #{$mainLhColor};
-  --gjs-secondary-light-color: #{$mainLhlColor};
-  --gjs-soft-light-color: #{$softLhColor};
-  --gjs-color-blue: #{$colorBlue};
-  --gjs-color-red: #{$colorRed};
-  --gjs-color-yellow: #{$colorYell};
-  --gjs-color-green: #{$colorGreen};
-  --gjs-left-width: #{$leftWidth};
-  --gjs-color-highlight: #{$colorHighlight};
-  --gjs-color-warn: #{$colorWarn};
-  --gjs-handle-margin: #{$hndlMargin};
-  --gjs-light-border: #{$lightBorder};
-  --gjs-arrow-color: #{$arrowColor};
-  --gjs-dark-text-shadow: #{$darkTextShadow};
-  --gjs-color-input-padding: #{$colorpSize};
-  --gjs-input-padding: #{$inputPadding}; // Has to be a single value
-  --gjs-padding-elem-classmanager: #{$paddElClm};
-  --gjs-upload-padding: #{$uploadPadding};
-  --gjs-animation-duration: #{$animSpeed};
-  --gjs-main-font: #{$mainFont};
-  --gjs-font-size: #{$fontSize};
-  --gjs-placeholder-background-color: #{$placeholderColor};
-  --gjs-canvas-top: #{$canvasTop};
-  --gjs-flex-item-gap: 5px;
-}
-
 .clear{ clear:both }
 
 .no-select{
@@ -244,8 +231,8 @@ $colorsAll: (one, var(--gjs-primary-color)),
   }
 
   &editor {
-    font-family: var(--gjs-main-font);
-    font-size: var(--gjs-font-size);
+    font-family: $mainFont;
+    font-size: $fontSizeS;
     position: relative;
     box-sizing: border-box;
     height: 100%;
@@ -275,9 +262,22 @@ $colorsAll: (one, var(--gjs-primary-color)),
  	@extend .no-select;
 }
 
+.#{$cv-prefix}canvas .#{$comp-prefix}selected{//TODO
+	outline: 3px solid $colorBlue !important;
+}
+
+*.#{$com-prefix}hover, div.#{$com-prefix}hover { outline: 1px solid $colorBlue; }
+
+*.#{$com-prefix}hover-delete, div.#{$com-prefix}hover-delete{
+	outline: 2px solid $colorRed;
+  	@include opacity(0.50);
+}
+*.#{$com-prefix}hover-move, div.#{$com-prefix}hover-move{
+	outline: 3px solid $colorYell;
+}
 .#{$com-prefix}badge, .#{$app-prefix}badge{
 	pointer-events: none;
-	background-color: var(--gjs-color-blue);
+	background-color: $colorBlue;
 	color: #fff;
 	padding: 2px 5px;
 	position: absolute; z-index: 1;
@@ -285,8 +285,12 @@ $colorsAll: (one, var(--gjs-primary-color)),
   outline: none;
   display: none;
 }
+.#{$com-prefix}badge-red{
+	@extend .#{$com-prefix}badge;
+	background-color: $colorRed;
+}
 .#{$app-prefix}badge-warning{
-	background-color: var(--gjs-color-yellow);
+	background-color: $colorYell;
 }
 .#{$app-prefix}placeholder,
 .#{$com-prefix}placeholder,
@@ -302,14 +306,14 @@ $colorsAll: (one, var(--gjs-primary-color)),
   border-style: solid !important;
   outline: none;
   box-sizing: border-box;
-  transition: top var(--gjs-animation-duration), left var(--gjs-animation-duration),
-    width var(--gjs-animation-duration), height var(--gjs-animation-duration);
+  transition: top $animSpeed, left $animSpeed,
+    width $animSpeed, height $animSpeed;
 }
 
 .#{$app-prefix}placeholder.horizontal,
 .#{$com-prefix}placeholder.horizontal,
 .#{$nv-prefix}placeholder.horizontal {
-  border-color: transparent var(--gjs-placeholder-background-color);
+  border-color: transparent $placeholderColor;
   border-width: 3px 5px;
   margin: -3px 0 0;
 }
@@ -317,7 +321,7 @@ $colorsAll: (one, var(--gjs-primary-color)),
 .#{$app-prefix}placeholder.vertical,
 .#{$com-prefix}placeholder.vertical,
 .#{$nv-prefix}placeholder.vertical {
-  border-color: var(--gjs-placeholder-background-color) transparent;
+  border-color: $placeholderColor transparent;
   border-width: 5px 3px;
   margin: 0 0 0 -3px;
 }
@@ -325,7 +329,7 @@ $colorsAll: (one, var(--gjs-primary-color)),
 .#{$app-prefix}placeholder-int,
 .#{$com-prefix}placeholder-int,
 .#{$nv-prefix}placeholder-int {
-	background-color: var(--gjs-placeholder-background-color);
+	background-color: $placeholderColor;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 	height: 100%; width: 100%;
 	pointer-events: none;
@@ -336,6 +340,25 @@ $colorsAll: (one, var(--gjs-primary-color)),
 @import 'gjs_panels';
 
 /***********  Components *************/
+
+.#{$comp-prefix}image-placeholder {
+	display:	block;
+	background-color: #f5f5f5;
+	color: 	$fontColorDk;
+  height: $imageCompDim;
+  width: $imageCompDim;
+	line-height: $imageCompDim;
+	outline: 3px solid $colorYell;
+	outline-offset: -3px;
+	text-align: center;
+	font-size: $imageCompDim/3;
+	cursor: pointer;
+
+  	&.fa-picture-o::after{
+		content:  "\f03e";
+	}
+}
+
 
 @import "gjs_inputs";
 
@@ -352,7 +375,7 @@ $colorsAll: (one, var(--gjs-primary-color)),
   @extend .no-select;
 
   font-weight: lighter;
-  background-color: var(--gjs-secondary-dark-color);
+  background-color: $mainDklColor;
   letter-spacing: 1px;
   padding: 9px 10px 9px 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
@@ -375,7 +398,7 @@ $colorsAll: (one, var(--gjs-primary-color)),
 	float:left;
 
 	> form {
-	  background-color: var(--gjs-secondary-dark-color);
+	  background-color: $mainDklColor;
 	  border: 2px dashed;
 	  border-radius: 3px;
 	  position: relative;
@@ -383,8 +406,8 @@ $colorsAll: (one, var(--gjs-primary-color)),
 	  margin-bottom: 15px;
 
 	  	&.#{$am-prefix}hover {
-			border: 2px solid var(--gjs-color-green);
-			color: lighten-color(var(--gjs-color-green), 5%);
+			border: 2px solid $colorGreen;
+			color: lighten($colorGreen, 5%); /*#7ee07e*/
 		}
 
 		&.#{$am-prefix}disabled{
@@ -393,7 +416,7 @@ $colorsAll: (one, var(--gjs-primary-color)),
 
 	  	##{$am-prefix}uploadFile{
 	  		@include opacity(0);
-	  		padding: var(--gjs-upload-padding);
+	  		padding: $uploadPadding;
 		  	width: 100%;
 		  	box-sizing: border-box;
 		}
@@ -401,7 +424,7 @@ $colorsAll: (one, var(--gjs-primary-color)),
 
 	##{$am-prefix}title {
 		position: absolute;
-		padding: var(--gjs-upload-padding);
+		padding: $uploadPadding;
 		width: 100%;
 	}
 }
@@ -423,7 +446,7 @@ $colorsAll: (one, var(--gjs-primary-color)),
 
 	&##{$cm-prefix}htmlmixed {
 		padding-right: 10px;
-		border-right: 1px solid var(--gjs-main-dark-color);
+		border-right: 1px solid $mainDkColor;
 		##{$cm-prefix}title { color: #a97d44;}
 	}
 	&##{$cm-prefix}css {
@@ -431,7 +454,7 @@ $colorsAll: (one, var(--gjs-primary-color)),
 		##{$cm-prefix}title { color: #ddca7e;}
 	}
 	##{$cm-prefix}title {
-	  background-color: var(--gjs-main-dark-color);
+	  background-color: $mainDkColor;
 	  font-size: 12px;
 	  padding: 5px 10px 3px;
 	  text-align: right;
@@ -451,12 +474,12 @@ $colorsAll: (one, var(--gjs-primary-color)),
   .sp-hue{ left: 90%; }
   .sp-color{right: 15%;}
   .sp-container {
-    border: 1px solid var(--gjs-main-dark-color);
-    box-shadow: 0 0 7px var(--gjs-main-dark-color);
+    border: 1px solid $mainDkColor;
+    box-shadow: 0 0 7px $mainDkColor;
     border-radius: 3px;
   }
   .sp-picker-container{border:none;}
-  .colpick_dark .colpick_color {  outline: 1px solid var(--gjs-main-dark-color);}
+  .colpick_dark .colpick_color {  outline: 1px solid $mainDkColor;}
   .sp-cancel, .sp-cancel:hover {
     bottom: -8px;
     color: #777 !important;
@@ -486,9 +509,9 @@ $colorsAll: (one, var(--gjs-primary-color)),
   	text-align: right;
   }
   .sp-container button, .sp-container button:hover, .sp-container button:active{
-  	background: var(--gjs-main-dark-color);
-    border-color: var(--gjs-main-dark-color);
-    color: var(--gjs-font-color);
+  	background: $mainDkColor;
+    border-color: $mainDkColor;
+    color: $fontColor;
     text-shadow: none;
     box-shadow: none;
     padding: 3px 5px;

@@ -1,14 +1,12 @@
 import Modal from 'modal_dialog';
-import Editor from 'editor';
+import ModalView from './view/ModalView';
 
 describe('Modal dialog', () => {
   describe('Main', () => {
-    var em;
     var obj;
 
     beforeEach(() => {
-      em = new Editor({});
-      obj = new Modal(em);
+      obj = new Modal().init();
     });
 
     afterEach(() => {

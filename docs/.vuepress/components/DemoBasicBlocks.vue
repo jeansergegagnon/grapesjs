@@ -20,7 +20,6 @@ export default {
 <style>
   .gjs {
     border: 3px solid #444;
-    box-sizing: border-box;
   }
   .gjs-block {
     width: auto;

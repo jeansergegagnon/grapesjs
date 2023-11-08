@@ -27,4 +27,3 @@ test
 .travis.yml
 *.md
 webpack.config.js
-tsconfig.json

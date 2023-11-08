@@ -1,13 +1,12 @@
 import CodeManager from 'code_manager';
-import Editor from 'editor/model/Editor';
+import Models from './model/CodeModels';
 
 describe('Code Manager', () => {
   describe('Main', () => {
     let obj;
 
     beforeEach(() => {
-      const em = new Editor({});
-      obj = new CodeManager(em);
+      obj = new CodeManager();
     });
 
     afterEach(() => {
@@ -16,6 +15,14 @@ describe('Code Manager', () => {
 
     test('Object exists', () => {
       expect(CodeManager).toBeTruthy();
+    });
+
+    test('No code generators inside', () => {
+      expect(obj.getGenerators()).toEqual({});
+    });
+
+    test('No code viewers inside', () => {
+      expect(obj.getViewers()).toEqual({});
     });
 
     test('Add and get code generator', () => {

@@ -4,23 +4,14 @@
     "node": true
   },
   "parserOptions": {
-    "ecmaVersion": "latest",
+    "ecmaVersion": 2018,
     "sourceType": "module"
   },
   "rules": {
     "strict": 0,
-    "quotes": ["warn", "single", { "avoidEscape": true }],
-    "eol-last": ["warn", "always"],
+    "quotes": [0, "single"],
+    "eol-last": [0],
     "no-mixed-requires": [0],
     "no-underscore-dangle": [0]
-  },
-  "overrides": [{
-    "files": ["*.ts"],
-    "parser": "@typescript-eslint/parser"
-  }],
-  "ignorePatterns": [
-    "dist/*",
-    "locale/*",
-    "private/*"
-  ]
+  }
 }
