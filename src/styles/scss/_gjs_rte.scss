@@ -2,10 +2,13 @@
   &toolbar {
     @extend .#{$app-prefix}no-user-select;
 
-    border: 1px solid $mainDkColor;
     position: absolute;
-    border-radius: 3px;
     z-index: 10;
+  }
+
+  &toolbar-ui {
+    border: 1px solid $mainDkColor;
+    border-radius: 3px;
   }
 
   &actionbar {
@@ -17,7 +20,7 @@
     align-items: center;
     justify-content: center;
     padding: 5px;
-    min-width: 25px;
+    width: 25px;
     border-right: 1px solid $mainDkColor;
     text-align: center;
     cursor: pointer;
